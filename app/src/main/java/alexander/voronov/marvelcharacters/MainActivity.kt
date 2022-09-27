@@ -1,11 +1,20 @@
 package alexander.voronov.marvelcharacters
 
-import androidx.appcompat.app.AppCompatActivity
+import alexander.voronov.marvelcharacters.databinding.ActivityMainBinding
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.activityMainLoadButton.setOnClickListener{
+            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
+        }
     }
 }
