@@ -1,10 +1,10 @@
 package alexander.voronov.marvelcharacters
 
 import alexander.voronov.marvelcharacters.entities.Result
-import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(itemEntity: Result){}
+    fun bind(itemEntity: Result) {}
 }
