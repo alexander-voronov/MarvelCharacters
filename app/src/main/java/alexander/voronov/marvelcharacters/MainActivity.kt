@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val adapter: ItemsAdapter
+    private val adapter = ItemsAdapter()
+    private val itemsRepository: ItemsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,5 +26,8 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         binding.itemRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.itemRecyclerView.adapter = adapter
+        itemsRepository.getItems {
+            adapter.setData()
+        }
     }
 }
