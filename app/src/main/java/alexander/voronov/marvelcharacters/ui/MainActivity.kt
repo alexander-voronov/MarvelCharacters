@@ -1,9 +1,9 @@
 package alexander.voronov.marvelcharacters.ui
 
-import alexander.voronov.marvelcharacters.domain.repository.ItemsRepository
-import alexander.voronov.marvelcharacters.data.RetrofitItemsRepositoryImplementation
+import alexander.voronov.marvelcharacters.app
 import alexander.voronov.marvelcharacters.databinding.ActivityMainBinding
 import alexander.voronov.marvelcharacters.domain.entities.Result
+import alexander.voronov.marvelcharacters.domain.repository.ItemsRepository
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter = ItemsAdapter()
-    private val itemsRepository: ItemsRepository = RetrofitItemsRepositoryImplementation()
+    private val itemsRepository: ItemsRepository by lazy { app.itemsRepository }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
