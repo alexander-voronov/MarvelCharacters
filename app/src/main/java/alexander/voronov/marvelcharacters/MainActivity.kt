@@ -1,6 +1,7 @@
 package alexander.voronov.marvelcharacters
 
 import alexander.voronov.marvelcharacters.databinding.ActivityMainBinding
+import alexander.voronov.marvelcharacters.entities.Result
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,23 +17,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showProgress(false)
+        initViews()
+    }
 
-        binding.activityMainLoadButton.setOnClickListener {
-            showProgress(true)
-            itemsRepository.getItems(
-                onSuccess = {
-                    showProgress(false)
-                    adapter.setData(it)
-                },
-                onError = {
-                    showProgress(false)
-                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                }
-            )
-        }
-
+    private fun initViews() {
+        binding.activityMainLoadButton.setOnClickListener { loadData() }
         initRecyclerView()
+        showProgress(false)
+    }
+
+    private fun loadData() {
+        showProgress(true)
+        itemsRepository.getItems(
+            onSuccess = {
+                showProgress(false)
+                onDataLoaded(it)
+            },
+            onError = {
+                showProgress(false)
+                onError(it)
+            }
+        )
+    }
+
+    private fun onDataLoaded(data: List<Result>) {
+        adapter.setData(data)
+    }
+
+    private fun onError(throwable: Throwable) {
+        Toast.makeText(this, throwable.message, Toast.LENGTH_SHORT).show()
     }
 
     private fun initRecyclerView() {
