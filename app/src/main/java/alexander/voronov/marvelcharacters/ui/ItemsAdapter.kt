@@ -1,6 +1,6 @@
-package alexander.voronov.marvelcharacters
+package alexander.voronov.marvelcharacters.ui
 
-import alexander.voronov.marvelcharacters.entities.Result
+import alexander.voronov.marvelcharacters.domain.entities.Result
 import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

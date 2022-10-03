@@ -1,6 +1,6 @@
-package alexander.voronov.marvelcharacters
+package alexander.voronov.marvelcharacters.domain.repository
 
-import alexander.voronov.marvelcharacters.entities.MyResponse
+import alexander.voronov.marvelcharacters.domain.entities.MyResponse
 
 interface ItemsRepository {
     fun getItems(

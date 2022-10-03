@@ -1,7 +1,8 @@
-package alexander.voronov.marvelcharacters
+package alexander.voronov.marvelcharacters.data
 
-import alexander.voronov.marvelcharacters.entities.MyResponse
-import alexander.voronov.marvelcharacters.retrofit.MarvelApi
+import alexander.voronov.marvelcharacters.domain.repository.ItemsRepository
+import alexander.voronov.marvelcharacters.domain.entities.MyResponse
+import alexander.voronov.marvelcharacters.data.retrofit.MarvelApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

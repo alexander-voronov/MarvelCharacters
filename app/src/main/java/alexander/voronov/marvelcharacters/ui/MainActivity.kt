@@ -1,7 +1,9 @@
-package alexander.voronov.marvelcharacters
+package alexander.voronov.marvelcharacters.ui
 
+import alexander.voronov.marvelcharacters.domain.repository.ItemsRepository
+import alexander.voronov.marvelcharacters.data.RetrofitItemsRepositoryImplementation
 import alexander.voronov.marvelcharacters.databinding.ActivityMainBinding
-import alexander.voronov.marvelcharacters.entities.Result
+import alexander.voronov.marvelcharacters.domain.entities.Result
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity

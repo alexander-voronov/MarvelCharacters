@@ -1,6 +1,6 @@
-package alexander.voronov.marvelcharacters.retrofit
+package alexander.voronov.marvelcharacters.data.retrofit
 
-import alexander.voronov.marvelcharacters.entities.MyResponse
+import alexander.voronov.marvelcharacters.domain.entities.MyResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
