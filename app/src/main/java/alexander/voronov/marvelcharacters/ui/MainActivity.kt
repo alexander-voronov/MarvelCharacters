@@ -33,20 +33,20 @@ class MainActivity : AppCompatActivity() {
         itemsRepository.getItems(
             onSuccess = {
                 showProgress(false)
-                onDataLoaded(it)
+                showItems(it)
             },
             onError = {
                 showProgress(false)
-                onError(it)
+                showError(it)
             }
         )
     }
 
-    private fun onDataLoaded(data: List<Result>) {
+    private fun showItems(data: List<Result>) {
         adapter.setData(data)
     }
 
-    private fun onError(throwable: Throwable) {
+    private fun showError(throwable: Throwable) {
         Toast.makeText(this, throwable.message, Toast.LENGTH_SHORT).show()
     }
 
