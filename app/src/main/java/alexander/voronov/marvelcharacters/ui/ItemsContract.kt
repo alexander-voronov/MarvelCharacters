@@ -4,7 +4,7 @@ import alexander.voronov.marvelcharacters.domain.entities.Result
 
 interface ItemsContract {
 
-    interface View{
+    interface View {
         fun showItems(items: List<Result>)
         fun showError(throwable: Throwable)
         fun showProgress(inProgress: Boolean)
@@ -12,8 +12,7 @@ interface ItemsContract {
 
     interface Presenter {
         fun attach(view: View)
-        fun detach(view: View)
-
+        fun detach()
         fun onLoad()
     }
 }
