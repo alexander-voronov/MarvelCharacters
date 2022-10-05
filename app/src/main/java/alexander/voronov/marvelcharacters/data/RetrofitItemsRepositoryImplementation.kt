@@ -1,8 +1,8 @@
 package alexander.voronov.marvelcharacters.data
 
-import alexander.voronov.marvelcharacters.domain.repository.ItemsRepository
-import alexander.voronov.marvelcharacters.domain.entities.MyResponse
 import alexander.voronov.marvelcharacters.data.retrofit.MarvelApi
+import alexander.voronov.marvelcharacters.domain.entities.MyResponse
+import alexander.voronov.marvelcharacters.domain.repository.ItemsRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -43,7 +43,7 @@ class RetrofitItemsRepositoryImplementation : ItemsRepository {
         onSuccess: (MyResponse) -> Unit,
         onError: ((Throwable) -> Unit)?
     ) {
-        api.listsOfComicCharacters(
+        api.listsOfComicsCharacters(
             limitResults,
             currentTimestamp,
             "Your public key",

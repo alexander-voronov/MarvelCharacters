@@ -5,5 +5,5 @@ data class Data(
     val limit: String,
     val offset: String,
     val results: List<Result>,
-    val total: String,
+    val total: String
 )

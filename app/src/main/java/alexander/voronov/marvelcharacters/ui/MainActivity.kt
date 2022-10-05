@@ -19,17 +19,28 @@ class MainActivity : AppCompatActivity(), ItemsContract.View {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initViews()
-        presenter = ItemsPresenter(app.itemsRepository)
+
+        presenter = extractPresenter()
         presenter.attach(this)
     }
+
+    private fun extractPresenter(): ItemsContract.Presenter =
+        lastCustomNonConfigurationInstance as? ItemsContract.Presenter
+            ?: ItemsPresenter(app.itemsRepository)
 
     override fun onDestroy() {
         presenter.detach()
         super.onDestroy()
     }
 
+    override fun onRetainCustomNonConfigurationInstance(): ItemsContract.Presenter {
+        return presenter
+    }
+
     private fun initViews() {
-        binding.activityMainLoadButton.setOnClickListener { presenter.onLoad() }
+        binding.activityMainLoadButton.setOnClickListener {
+            presenter.onLoad()
+        }
         initRecyclerView()
         showProgress(false)
     }
