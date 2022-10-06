@@ -4,7 +4,7 @@ Shows Marvel characters and their description
 Used stack:
 - Kotlin
 - MVP
-- retrofit
+- Retrofit
 - Coil
 - application "survives" screen rotation
 
