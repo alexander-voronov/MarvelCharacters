@@ -1,5 +1,6 @@
 package alexander.voronov.marvelcharacters.data
 
+import alexander.voronov.marvelcharacters.BuildConfig
 import alexander.voronov.marvelcharacters.data.retrofit.MarvelApi
 import alexander.voronov.marvelcharacters.domain.entities.MyResponse
 import alexander.voronov.marvelcharacters.domain.repository.ItemsRepository
@@ -13,6 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.security.MessageDigest
 
 
+// Your private key
+private const val YOUR_PRIVATE_KEY = "Your private key"
+
+// Your public key
+private const val YOUR_PUBLIC_KEY = "Your public key"
+
 class RetrofitItemsRepositoryImplementation : ItemsRepository {
 
     private val api = Retrofit.Builder()
@@ -24,11 +31,14 @@ class RetrofitItemsRepositoryImplementation : ItemsRepository {
             })
         }.build()).build().create(MarvelApi::class.java)
 
-    //authorizationOnServer
+    // Authorization on server
 
     private val currentTimestamp = System.currentTimeMillis().toString()
     private val digestParameters: String =
-        currentTimestamp + "Your private key" + "Your public key"
+        currentTimestamp + BuildConfig.YOUR_PRIVATE_KEY + BuildConfig.YOUR_PUBLIC_KEY
+    //currentTimestamp + YOUR_PRIVATE_KEY + YOUR_PUBLIC_KEY
+
+
     private val String.md5: String
         get() {
             val bytes = MessageDigest.getInstance("MD5").digest(this.toByteArray())
@@ -36,7 +46,7 @@ class RetrofitItemsRepositoryImplementation : ItemsRepository {
                 "%02x".format(it)
             }
         }
-    private val hashDigestParameters: String = digestParameters.md5
+    private val hashDigestParameters = digestParameters.md5
     private val limitResults: String = "100"
 
     override fun getItems(
@@ -46,7 +56,8 @@ class RetrofitItemsRepositoryImplementation : ItemsRepository {
         api.listsOfComicsCharacters(
             limitResults,
             currentTimestamp,
-            "Your public key",
+            //YOUR_PUBLIC_KEY,
+            BuildConfig.YOUR_PUBLIC_KEY,
             hashDigestParameters
         )
             .enqueue(object : Callback<MyResponse> {

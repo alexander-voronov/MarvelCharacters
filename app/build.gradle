@@ -16,6 +16,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("keys.properties").newDataInputStream())
+        def privateKey = properties.getProperty("private_key", "")
+        it.buildConfigField "String", "YOUR_PRIVATE_KEY", privateKey
+        def publicKey = properties.getProperty("public_key", "")
+        it.buildConfigField "String", "YOUR_PUBLIC_KEY", publicKey
+    }
+
     buildTypes {
         release {
             minifyEnabled false
