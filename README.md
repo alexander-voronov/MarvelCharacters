@@ -11,6 +11,7 @@ Used stack:
 To run the application, you need to get the keys https://developer.marvel.com/ 
 and register them in RetrofitItemsRepositoryImplementation.kt
 In this application, the keys are hidden using BuildConfig
+Or add a file (keys.properties) with keys to the project
 
 I plan to add a second screen by clicking on the character
 
