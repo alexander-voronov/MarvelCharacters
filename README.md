@@ -6,7 +6,7 @@ Used stack:
 - MVP
 - Retrofit
 - Coil
-- application "survives" screen rotation
+- application survive configuration changes
 
 To run the application, you need to get the keys https://developer.marvel.com/ 
 and register them in RetrofitItemsRepositoryImplementation.kt
